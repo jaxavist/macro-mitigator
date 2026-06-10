@@ -1,6 +1,8 @@
-# Atlassian DC-to-Cloud Migration Toolkit
+# Atlassian DC-to-Cloud Migration Toolkit — Confluence Edition
 
-Scripts for migrating Confluence and Jira from Data Center to Cloud. Covers Confluence macro conversion (shared-blocks, help-text, extra-table-properties, Aura tabs, legacy wrappers) and Jira automation ID remediation.
+Scripts for migrating Confluence from Data Center to Cloud. Covers macro conversion including shared-blocks, help-text, extra-table-properties, Aura tabs, and legacy wrappers.
+
+**Note:** Jira automation remediation scripts have been moved to the [daybreak](https://github.com/jaxavist/daybreak) repository.
 
 ## Prerequisites
 
@@ -15,13 +17,6 @@ Scripts for migrating Confluence and Jira from Data Center to Cloud. Covers Conf
 export CONFLUENCE_BASE_URL="https://your-site.atlassian.net"
 export CONFLUENCE_EMAIL="your-email@company.com"
 export CONFLUENCE_API_TOKEN="your-api-token"
-```
-
-### Jira automation scripts
-
-```bash
-export ATLASSIAN_EMAIL="your-email@company.com"
-export ATLASSIAN_API_TOKEN="your-api-token"
 ```
 
 ---
@@ -78,17 +73,6 @@ export ATLASSIAN_API_TOKEN="your-api-token"
 | `add_group_to_restricted.py` | Adds a group to edit restrictions on all restricted pages (preserves existing restrictions). |
 | `verify_nbm.py` | Post-migration verification scanner. Reports macro state across one or more spaces. |
 | `restore_page_version.py` | Restores a Confluence page to a specific prior version. |
-
----
-
-## Jira Automation Remediation Scripts
-
-| Script | Purpose |
-|--------|---------|
-| `compare_and_fix.py` | Compares custom fields, statuses, and project IDs between two Jira environments. Audits and fixes automation rules that reference wrong-environment IDs. |
-| `audit_fix_automations.py` | Dynamically builds DC→Cloud field mapping by pulling fields from both APIs, then scans/fixes automation rules. |
-| `fix_automation_ids.py` | Offline JSON fixer: applies all DC→Cloud ID replacements (fields, projects, statuses, users, URLs, portals) to an exported automation rules JSON. |
-| `map_jsm_portal_urls.py` | Maps DC JSM portal/request-type URLs to their Cloud equivalents via REST API. |
 
 ---
 
